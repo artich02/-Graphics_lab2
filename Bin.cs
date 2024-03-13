@@ -23,12 +23,13 @@ namespace Lab2
                 X = reader.ReadInt32();
                 Y = reader.ReadInt32();
                 Z = reader.ReadInt32();
+                _ = reader.ReadInt32();
 
                 int arraySize = X * Y * Z;
                 array = new short[arraySize];
                 for (int i = 0; i < arraySize; i++)
                 {
-                    array[i] = reader.ReadInt16();
+                    array[i] = reader.ReadByte();
                 }
             }
         }

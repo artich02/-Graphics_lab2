@@ -220,7 +220,6 @@
             // 
             this.radioButtonQuadsStrip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radioButtonQuadsStrip.AutoSize = true;
-            this.radioButtonQuadsStrip.Enabled = false;
             this.radioButtonQuadsStrip.Location = new System.Drawing.Point(667, 4);
             this.radioButtonQuadsStrip.Name = "radioButtonQuadsStrip";
             this.radioButtonQuadsStrip.Size = new System.Drawing.Size(88, 20);

@@ -62,31 +62,31 @@ namespace Lab2
         public static void DrawQuadStrip(int layerNumber)
         {
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-            
+
             for (int x = 0; x < Bin.X - 1; x++)
             {
                 GL.Begin(BeginMode.QuadStrip);
                 short value;
-                value = Bin.array[x + 0 * Bin.X + layerNumber * Bin.X * Bin.Y];
-                GL.Color3(Color.Magenta);
+                value = Bin.array[x + layerNumber * Bin.X * Bin.Y];
+                GL.Color3(TransferFunction(value));
                 GL.Vertex2(x, 0);
 
-                value = Bin.array[x + (0 + 1) * Bin.X + layerNumber * Bin.X * Bin.Y];
-                GL.Color3(Color.Magenta);
-                GL.Vertex2(x, 0 + 1);
+                value = Bin.array[(x + 1) + layerNumber * Bin.X * Bin.Y];
+                GL.Color3(TransferFunction(value));
+                GL.Vertex2(x + 1, 0);
                 for (int y = 1; y < Bin.Y - 1; y++)
                 {
-                    value = Bin.array[(x + 1) + (y + 1) * Bin.X + layerNumber * Bin.X * Bin.Y];
-                    GL.Color3(Color.Magenta);
-                    GL.Vertex2(x + 1, y + 1);
-
-                    value = Bin.array[(x + 1) + y * Bin.X + layerNumber * Bin.X * Bin.Y];
+                    value = Bin.array[x + (y + 1) * Bin.X + layerNumber * Bin.X * Bin.Y];
                     GL.Color3(TransferFunction(value));
-                    GL.Vertex2(x + 1, y);
+                    GL.Vertex2(x, y + 1);
+
+                    value = Bin.array[(x + 1) + (y + 1) * Bin.X + layerNumber * Bin.X * Bin.Y];
+                    GL.Color3(TransferFunction(value));
+                    GL.Vertex2(x + 1, y + 1);
                 }
                 GL.End();
             }
-            
+
         }
 
         static Bitmap textureImage;

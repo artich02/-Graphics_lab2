@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Lab2
 {
@@ -17,19 +15,27 @@ namespace Lab2
         {
             if(File.Exists(path))
             {
-                BinaryReader reader = 
-                    new BinaryReader(File.Open(path, FileMode.Open));
+                BinaryReader reader;
+                try
+                {
+                    reader =
+                        new BinaryReader(File.Open(path, FileMode.Open));
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message, "Error", 0);
+                    return;
+                }
 
                 X = reader.ReadInt32();
                 Y = reader.ReadInt32();
                 Z = reader.ReadInt32();
-                _ = reader.ReadInt32();
 
                 int arraySize = X * Y * Z;
                 array = new short[arraySize];
                 for (int i = 0; i < arraySize; i++)
                 {
-                    array[i] = reader.ReadByte();
+                    array[i] = reader.ReadInt16();
                 }
             }
         }

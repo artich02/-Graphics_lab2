@@ -29,10 +29,12 @@ namespace Lab2
         private void OpenImageButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Binary Files|*.bin";
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 string str = dialog.FileName;
                 bin.readBIN(str);
+                trackBarLyr.Maximum = Bin.Z;
                 View.SetupView(glControl1.Width, glControl1.Height);
                 imageLoaded = true;
                 glControl1.Invalidate();
@@ -43,9 +45,25 @@ namespace Lab2
         {
             if (imageLoaded)
             {
-                View.DrawQuads(0);
+                View.DrawQuads(trackBarLyr.Value-1);
                 glControl1.SwapBuffers();
             }
+        }
+
+        private void trackBarMax_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBarMin_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBarLyr_ValueChanged(object sender, EventArgs e)
+        {
+            textBoxLyr.Text = trackBarLyr.Value.ToString();
+            glControl1_Paint(sender, null);
         }
     }
 }

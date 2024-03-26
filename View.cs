@@ -3,8 +3,6 @@ using System.Drawing;
 
 namespace Lab2
 {
-
-
     class View
     {
         public static void SetupView(int width, int height)
@@ -20,9 +18,9 @@ namespace Lab2
         {
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             GL.Begin(BeginMode.Quads);
-            for (int x = 0; x < Bin.X; x++)
+            for (int x = 0; x < Bin.X-1; x++)
             {
-                for (int y = 0; y < Bin.Y; y++)
+                for (int y = 0; y < Bin.Y-1; y++)
                 {
                     short value;
 

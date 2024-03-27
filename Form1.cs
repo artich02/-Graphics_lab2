@@ -31,10 +31,11 @@ namespace Lab2
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 string str = dialog.FileName;
-                bin.readBIN(str);
+                imageLoaded = bin.readBIN(str);
+                if (!imageLoaded)
+                    return;
                 trackBarLyr.Maximum = Bin.Z;
                 View.SetupView(glControl1.Width, glControl1.Height);
-                imageLoaded = true;
                 glControl1.Invalidate();
             }
         }
